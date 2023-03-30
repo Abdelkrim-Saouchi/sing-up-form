@@ -8,5 +8,47 @@
     <script src="index.js" defer></script>
     <title>Sing-up Form</title>
   </head>
-  <body></body>
+  <body>
+    <form action="" class="sing-up-form">
+      <h1 class="sing-up-form__title">Sing up</h1>
+      <div class="sing-up-form__wrapper">
+        <label for="email" class="sing-up-form__label">Email:</label>
+        <input
+          type="email"
+          id="email"
+          placeholder="123@example.com"
+          class="sing-up-form__input"
+        />
+      </div>
+      <div class="sing-up-form__wrapper">
+        <label for="country" class="sing-up-form__label">Country:</label>
+        <select id="country">
+          <option value="ch">Switzerland</option>
+          <option value="fr">France</option>
+          <option value="de">Germany</option>
+          <option value="nl">The Netherlands</option>
+          <option value="dz">Algeria</option>
+        </select>
+      </div>
+      <div class="sing-up-form__wrapper">
+        <label for="zipcode" class="sing-up-form__label">Zip Code:</label>
+        <input type="text" id="zipcode" class="sing-up-form__input" />
+      </div>
+      <div class="sing-up-form__wrapper">
+        <label for="password" class="sing-up-form__label">Password:</label>
+        <input type="password" id="password" class="sing-up-form__input" />
+      </div>
+      <div class="sing-up-form__wrapper">
+        <label for="psw-confirmation" class="sing-up-form__label"
+          >Password confirmation:</label
+        >
+        <input
+          type="password"
+          id="psw-confirmation"
+          class="sing-up-form__input"
+        />
+      </div>
+      <button type="submit" class="submit-btn">Submit</button>
+    </form>
+  </body>
 </html>
