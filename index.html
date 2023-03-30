@@ -32,13 +32,21 @@
       </div>
       <div class="sing-up-form__wrapper">
         <label for="zipcode" class="sing-up-form__label">Zip Code:</label>
-        <input type="text" id="zipcode" class="sing-up-form__input" />
+        <input type="text" id="zip-code" class="sing-up-form__input" />
       </div>
-      <div class="sing-up-form__wrapper">
+      <div class="sing-up-form__wrapper sing-up-form__wrapper--password">
         <label for="password" class="sing-up-form__label">Password:</label>
-        <input type="password" id="password" class="sing-up-form__input" />
+        <input
+          type="password"
+          id="password"
+          class="sing-up-form__input"
+          minlength="8"
+        />
+        <span class="sing-up-form__password-msg"></span>
       </div>
-      <div class="sing-up-form__wrapper">
+      <div
+        class="sing-up-form__wrapper sing-up-form__wrapper--psw-confirmation"
+      >
         <label for="psw-confirmation" class="sing-up-form__label"
           >Password confirmation:</label
         >
@@ -47,6 +55,7 @@
           id="psw-confirmation"
           class="sing-up-form__input"
         />
+        <span class="sing-up-form__confirmation-msg"></span>
       </div>
       <button type="submit" class="submit-btn">Submit</button>
     </form>

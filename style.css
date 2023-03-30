@@ -65,3 +65,15 @@ body {
 .sing-up-form__input:invalid {
   border: 2px solid red;
 }
+
+.sing-up-form__wrapper--password,
+.sing-up-form__wrapper--psw-confirmation {
+  position: relative;
+}
+
+span.sing-up-form__password-msg,
+span.sing-up-form__confirmation-msg {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
