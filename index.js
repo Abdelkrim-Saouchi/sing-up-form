@@ -1,9 +1,7 @@
 const email = document.querySelector('#email');
-const submitBtn = document.querySelector('.submit-btn');
 const country = document.querySelector('#country');
 const zipCode = document.querySelector('#zip-code');
 const password = document.querySelector('#password');
-
 const passwordLengthMsg = document.querySelector('.sing-up-form__password-msg');
 const pswConfirmation = document.querySelector('#psw-confirmation');
 const pswConfirmationMsg = document.querySelector(
@@ -11,7 +9,9 @@ const pswConfirmationMsg = document.querySelector(
 );
 
 function checkEmailValidity() {
-  if (email.validity.typeMismatch) {
+  if (email.validity.valueMissing) {
+    email.setCustomValidity('Please Enter your Email !');
+  } else if (email.validity.typeMismatch) {
     email.setCustomValidity(
       'Invalid email format! correct format: 123a@example.com'
     );
@@ -42,35 +42,43 @@ function checkZipCode() {
   };
 
   const countryValue = country.value;
-
   const constraint = new RegExp(constraints[countryValue][0], '');
 
-  if (constraint.test(zipCode.value)) {
+  if (zipCode.validity.valueMissing) {
+    zipCode.setCustomValidity('Please Enter Zip Code !');
+  } else if (constraint.test(zipCode.value)) {
     zipCode.setCustomValidity('');
   } else {
     zipCode.setCustomValidity(constraints[countryValue][1]);
   }
 }
 
-function checkPasswordLength() {
-  if (password.validity.tooShort) {
-    passwordLengthMsg.textContent = 'Weak';
-    passwordLengthMsg.style.color = 'red';
+function changeErrorMsg(element, msg, msgColor) {
+  // eslint-disable-next-line no-param-reassign
+  element.textContent = msg;
+  // eslint-disable-next-line no-param-reassign
+  element.style.color = msgColor;
+}
+
+function checkPasswordValidity() {
+  if (password.validity.valueMissing) {
+    changeErrorMsg(passwordLengthMsg, '', 'red');
+    password.setCustomValidity('Please Enter your Password !');
+  } else if (password.validity.tooShort) {
+    changeErrorMsg(passwordLengthMsg, 'Weak', 'red');
     password.setCustomValidity('Password must be longer than 8 characters');
   } else {
-    passwordLengthMsg.textContent = 'OK';
-    passwordLengthMsg.style.color = 'green';
+    changeErrorMsg(passwordLengthMsg, 'OK', 'green');
     password.setCustomValidity('');
   }
 }
 
 function checkPasswordMatch() {
   if (password.value === pswConfirmation.value) {
-    pswConfirmationMsg.textContent = '';
+    changeErrorMsg(pswConfirmationMsg, '', 'green');
     pswConfirmation.setCustomValidity('');
   } else {
-    pswConfirmationMsg.textContent = 'Mismatch!';
-    pswConfirmationMsg.style.color = 'red';
+    changeErrorMsg(pswConfirmationMsg, 'Mismatch!', 'red');
     pswConfirmation.setCustomValidity('Password fields do not match!');
   }
 }
@@ -79,9 +87,7 @@ email.addEventListener('input', checkEmailValidity);
 zipCode.addEventListener('input', checkZipCode);
 country.addEventListener('change', checkZipCode);
 password.addEventListener('input', () => {
-  checkPasswordLength();
+  checkPasswordValidity();
   checkPasswordMatch();
 });
 pswConfirmation.addEventListener('input', checkPasswordMatch);
-
-submitBtn.addEventListener('submit', () => {});

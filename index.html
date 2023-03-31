@@ -18,6 +18,7 @@
           id="email"
           placeholder="123@example.com"
           class="sing-up-form__input"
+          required
         />
       </div>
       <div class="sing-up-form__wrapper">
@@ -32,7 +33,7 @@
       </div>
       <div class="sing-up-form__wrapper">
         <label for="zipcode" class="sing-up-form__label">Zip Code:</label>
-        <input type="text" id="zip-code" class="sing-up-form__input" />
+        <input type="text" id="zip-code" class="sing-up-form__input" required />
       </div>
       <div class="sing-up-form__wrapper sing-up-form__wrapper--password">
         <label for="password" class="sing-up-form__label">Password:</label>
@@ -41,6 +42,7 @@
           id="password"
           class="sing-up-form__input"
           minlength="8"
+          required
         />
         <span class="sing-up-form__password-msg"></span>
       </div>
@@ -54,6 +56,7 @@
           type="password"
           id="psw-confirmation"
           class="sing-up-form__input"
+          required
         />
         <span class="sing-up-form__confirmation-msg"></span>
       </div>
